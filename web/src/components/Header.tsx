@@ -21,9 +21,9 @@ export function Header() {
         <Dialog.Root>
           <Dialog.Trigger
             type="button"
-            className="border border-blue-500 font-semibold rounded-lg px-6 py-4 flex items-center gap-3 hover:border-blue-300"
+            className="border border-green-500 font-semibold rounded-lg px-6 py-4 flex items-center gap-3 hover:border-green-300"
           >
-            <Plus size={20} className="text-blue-500" />
+            <Plus size={20} className="text-green-500" />
             Novo routine
           </Dialog.Trigger>
 

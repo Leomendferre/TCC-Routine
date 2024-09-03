@@ -67,12 +67,14 @@ const Auth: React.FC = () => {
               className="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
           </div>
-          <button
-            type="submit"
-            className="w-full py-2 font-semibold bg-green-500 text-white rounded-md hover:bg-green-600"
-          >
-            {isLogin ? 'Login' : 'Criar conta'}
-          </button>
+          <div className="w-full flex justify-center">
+            <button
+              type="submit"
+              className="w-1/2 mx-auto mt-5 py-2 font-semibold bg-green-500 text-white rounded-md hover:bg-green-600"
+            >
+              {isLogin ? 'Login' : 'Criar conta'}
+            </button>
+          </div>
         </form>
       </div>
     </div>

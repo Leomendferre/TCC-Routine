@@ -28,11 +28,11 @@ export function RoutineDay({ defaultCompleted = 0, amount = 0, date }: RoutineDa
       <Popover.Trigger 
       className={clsx('w-10 h-10  border-2  rounded-lg', {
           'bg-zinc-900 border-zinc-800': completedPercentage === 0,
-          'bg-blue-900 border-blue-700': completedPercentage > 0 && completedPercentage < 40,
-          'bg-blue-800 border-blue-600': completedPercentage >= 20 && completedPercentage < 40,
-          'bg-blue-700 border-blue-500': completedPercentage >= 40 && completedPercentage < 60,
-          'bg-blue-600 border-blue-500': completedPercentage >= 60 && completedPercentage < 80,
-          'bg-blue-500 border-blue-400': completedPercentage >= 80,
+          'bg-green-900 border-green-700': completedPercentage > 0 && completedPercentage < 40,
+          'bg-green-800 border-green-600': completedPercentage >= 20 && completedPercentage < 40,
+          'bg-green-700 border-green-500': completedPercentage >= 40 && completedPercentage < 60,
+          'bg-green-600 border-green-500': completedPercentage >= 60 && completedPercentage < 80,
+          'bg-green-500 border-green-400': completedPercentage >= 80,
         })} 
       />
       
