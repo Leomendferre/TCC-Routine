@@ -2,16 +2,16 @@ import * as Popover from '@radix-ui/react-popover';
 import clsx from 'clsx';
 import { ProgressBar } from './ProgressBar';
 import dayjs from 'dayjs';
-import { TargetsList } from './TargetsList';
+import { RoutinesList } from './RoutinesList';
 import { useState } from 'react';
 
-interface TargetDayProps {
+interface RoutineDayProps {
   date: Date
   defaultCompleted?: number
   amount?: number
 }
 
-export function TargetDay({ defaultCompleted = 0, amount = 0, date }: TargetDayProps){
+export function RoutineDay({ defaultCompleted = 0, amount = 0, date }: RoutineDayProps){
   const [completed, setCompleted] = useState(defaultCompleted)
 
   const completedPercentage = amount > 0 ? Math.round((completed/ amount) * 100) : 0
@@ -43,7 +43,7 @@ export function TargetDay({ defaultCompleted = 0, amount = 0, date }: TargetDayP
 
           <ProgressBar progress={completedPercentage} />
 
-          <TargetsList date={date} onCompletedChanged={handleCompletedChanged} />
+          <RoutinesList date={date} onCompletedChanged={handleCompletedChanged} />
 
           <Popover.Arrow height={8} width={16} className="fill-zinc-900" />
         </Popover.Content>

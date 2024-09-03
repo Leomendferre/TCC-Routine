@@ -13,23 +13,23 @@ const availableWeekDays = [
   'Sábado',
 ]
 
-export function NewTargetsForm() {
+export function NewRoutinesForm() {
   const [title, setTitle] = useState('')
   const [weekDays, setWeekDays] = useState<number[]>([])
   const userId = localStorage.getItem('userId');
 
-  async function createNewTarget(event: FormEvent) {
+  async function createNewRoutine(event: FormEvent) {
     event.preventDefault()
     
     if (!title || weekDays.length === 0) {
       return(
-        alert('Digite o nome do seu Target, e selecione um dia da semana!')
+        alert('Digite o nome do seu Routine, e selecione um dia da semana!')
       )
     }
 
     console.log('User ID:', userId);
 
-    await api.post(`/user/${userId}/targets`, {
+    await api.post(`/user/${userId}/routines`, {
       title,
       weekDays,
     })
@@ -37,7 +37,7 @@ export function NewTargetsForm() {
     setTitle('')
     setWeekDays([])
 
-    alert('Target criado com sucesso!')
+    alert('Routine criado com sucesso!')
     
   }
 
@@ -54,7 +54,7 @@ export function NewTargetsForm() {
   }
 
   return(
-    <form onSubmit={createNewTarget} className="w-full flex flex-col mt-6">
+    <form onSubmit={createNewRoutine} className="w-full flex flex-col mt-6">
       <label htmlFor="title" className="font-semiboold leading-tight">
         Qual seu objetivo?
       </label>

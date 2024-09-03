@@ -2,7 +2,7 @@ import dayjs from "dayjs"
 import { useEffect, useState } from "react"
 import { api } from "../lib/axios"
 import { generateDatesFromMonthBeginning, getReorderedWeekDays } from "../utils/generate-dates-from-month-beginning"
-import { TargetDay } from "./TargetDay"
+import { RoutineDay } from "./RoutineDay"
 
 
 const summaryDates = generateDatesFromMonthBeginning()
@@ -60,7 +60,7 @@ export function SummaryTable() {
       })
 
         return (
-          <TargetDay 
+          <RoutineDay 
             key={date.toString()}
             date={date}
             amount={dayInSummary?.amount} 

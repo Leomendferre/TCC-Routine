@@ -44,24 +44,24 @@ export async function appRoutes(app: FastifyInstance) {
     reply.send({ id: user.id, username: user.username });
   });
 
-  app.post('/user/:id/targets', async (request) => {
-    const createTargetBody = z.object({
+  app.post('/user/:id/routines', async (request) => {
+    const createRoutineBody = z.object({
       title: z.string(),
       weekDays: z.array(
         z.number().min(0).max(6)
       ),
     })
 
-    const targetUser = z.object({
+    const routineUser = z.object({
       id: z.string().uuid(),
     })
 
-    const { title, weekDays } = createTargetBody.parse(request.body)
-    const { id } = targetUser.parse(request.params)
+    const { title, weekDays } = createRoutineBody.parse(request.body)
+    const { id } = routineUser.parse(request.params)
 
     const today = dayjs().startOf('day').toDate()
 
-    await prisma.target.create({
+    await prisma.routine.create({
       data: {
         user_id: id,
         title,
@@ -88,7 +88,7 @@ export async function appRoutes(app: FastifyInstance) {
     const parsedDate = dayjs(date).startOf('day')
     const weekDay = parsedDate.get('day')
 
-    const possibleTargets = await prisma.target.findMany({
+    const possibleRoutines = await prisma.routine.findMany({
       where: {
         created_at: {
           lte: date,
@@ -107,26 +107,26 @@ export async function appRoutes(app: FastifyInstance) {
         date: parsedDate.toDate(),
       },
       include: {
-        dayTargets: true,
+        dayRoutines: true,
       }
     })
 
-    const completedTargets = day?.dayTargets.map(dayTarget => {
-      return dayTarget.target_id
+    const completedRoutines = day?.dayRoutines.map(dayRoutine => {
+      return dayRoutine.routine_id
     }) ?? []
 
     return{
-      possibleTargets,
-      completedTargets,
+      possibleRoutines,
+      completedRoutines,
     }
   })
 
-  app.patch('/targets/:id/toggle', async (request) => {
-    const toggleTargetsParams = z.object({
+  app.patch('/routines/:id/toggle', async (request) => {
+    const toggleRoutinesParams = z.object({
       id: z.string().uuid(),
     })
 
-    const { id } = toggleTargetsParams.parse(request.params)
+    const { id } = toggleRoutinesParams.parse(request.params)
 
     const today = dayjs().startOf('day').toDate()
 
@@ -144,26 +144,26 @@ export async function appRoutes(app: FastifyInstance) {
       })
     }
 
-    const dayTarget = await prisma.dayTarget.findUnique({
+    const dayRoutine = await prisma.dayRoutine.findUnique({
       where: {
-        day_id_target_id: {
+        day_id_routine_id: {
           day_id: day.id,
-          target_id: id
+          routine_id: id
         }
       }
     }) 
 
-    if (dayTarget) {
-      await prisma.dayTarget.delete({
+    if (dayRoutine) {
+      await prisma.dayRoutine.delete({
         where: {
-          id: dayTarget.id,
+          id: dayRoutine.id,
         }
       })
     } else {
-      await prisma.dayTarget.create({
+      await prisma.dayRoutine.create({
         data: {
           day_id: day.id,
-          target_id: id
+          routine_id: id
         }
       })
     }
@@ -171,11 +171,11 @@ export async function appRoutes(app: FastifyInstance) {
   })
  
   app.get('/user/:id/summary', async (request) => {
-    const targetUser = z.object({
+    const routineUser = z.object({
       id: z.string().uuid(),
     })
 
-    const { id } = targetUser.parse(request.params)
+    const { id } = routineUser.parse(request.params)
 
     const summary = await prisma.$queryRaw`
       SELECT 
@@ -184,16 +184,16 @@ export async function appRoutes(app: FastifyInstance) {
         (
           SELECT 
             CAST(COUNT(*) AS FLOAT)
-          FROM day_targets DH
-          JOIN targets T ON DH.target_id = T.id
+          FROM day_routines DH
+          JOIN routines T ON DH.routine_id = T.id
           WHERE DH.day_id = D.id
             AND T.user_id = ${id}
         ) AS completed,
         (
           SELECT
             CAST(COUNT(*) AS FLOAT)
-          FROM target_week_days HWD
-          JOIN targets H ON H.id = HWD.target_id
+          FROM routine_week_days HWD
+          JOIN routines H ON H.id = HWD.routine_id
           WHERE
             HWD.week_day = CAST(STRFTIME('%w', D.date / 1000.0, 'unixepoch') AS INT)
             AND H.created_at <= D.date
@@ -205,26 +205,26 @@ export async function appRoutes(app: FastifyInstance) {
     return summary
   })
 
-  app.delete('/targets/:id/delete', async (request) => {
-    const deleteTargetParams = z.object({
+  app.delete('/routines/:id/delete', async (request) => {
+    const deleteRoutineParams = z.object({
       id: z.string().uuid(),
     });
   
-    const { id } = deleteTargetParams.parse(request.params);
+    const { id } = deleteRoutineParams.parse(request.params);
     try {
-      await prisma.dayTarget.deleteMany({
+      await prisma.dayRoutine.deleteMany({
         where: {
-          target_id: id,
+          routine_id: id,
         },
       });
 
-      await prisma.targetWeekDays.deleteMany({
+      await prisma.routineWeekDays.deleteMany({
         where: {
-          target_id: id,
+          routine_id: id,
         },
       });
 
-      await prisma.target.delete({
+      await prisma.routine.delete({
         where: {
           id,
         },

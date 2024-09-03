@@ -3,7 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { useNavigate } from 'react-router-dom';
 
 import logoImage from '../assets/logo.svg';
-import { NewTargetsForm } from './NewTargetsForm';
+import { NewRoutinesForm } from './NewRoutinesForm';
 
 export function Header() {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ export function Header() {
 
   return (
     <div className="w-full max-w-3xl mx-auto flex items-center justify-between">
-      <img src={logoImage} alt="Targets" />
+      <img src={logoImage} alt="Routines" />
 
       <div className="flex items-center gap-4">
         <Dialog.Root>
@@ -24,7 +24,7 @@ export function Header() {
             className="border border-blue-500 font-semibold rounded-lg px-6 py-4 flex items-center gap-3 hover:border-blue-300"
           >
             <Plus size={20} className="text-blue-500" />
-            Novo target
+            Novo routine
           </Dialog.Trigger>
 
           <Dialog.Portal>
@@ -36,9 +36,9 @@ export function Header() {
               </Dialog.Close>
 
               <Dialog.Title className="text-3xl leading-tight font-extrabold">
-                Criar target
+                Criar routine
               </Dialog.Title>
-              <NewTargetsForm />
+              <NewRoutinesForm />
             </Dialog.Content>
           </Dialog.Portal>
         </Dialog.Root>

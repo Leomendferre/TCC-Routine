@@ -20,5 +20,5 @@ app.setErrorHandler((error, _, reply) => {
 app.listen({
   port:3333,
 }).then(() => {
-  console.log('TARGET ON!')
+  console.log('routine ON!')
 })
