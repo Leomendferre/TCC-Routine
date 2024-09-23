@@ -58,7 +58,7 @@ export function SummaryTable() {
       const dayInSummary = summary.find(day => {
         return dayjs(date).isSame(day.date, 'day')
       })
-
+      
         return (
           <RoutineDay 
             key={date.toString()}

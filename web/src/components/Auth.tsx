@@ -4,7 +4,6 @@ import { api } from "../lib/axios"
 
 import logoImage from '../assets/logo.svg';
 
-
 const Auth: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState('');
