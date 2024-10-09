@@ -27,11 +27,14 @@ const Auth: React.FC = () => {
     }
   };
 
+  const handleForgotPassword = () => {
+    navigate('/forgot-password');   };
+
   return (
     <div className="w-screen h-screen  bg-black">
       <div className="flex justify-center p-8">
           <img className="w-28 h-16 lg:w-32 lg:h-24" src={logoImage} alt="Routine Logo"/>
-        </div>
+      </div>
       <div className="w-screen max-w-md m-auto p-8 space-y-6 text-white shadow-md rounded-lg">
         <div className="flex justify-around">
           <button
@@ -75,6 +78,11 @@ const Auth: React.FC = () => {
             </button>
           </div>
         </form>
+        <div className="text-center">
+          <button onClick={handleForgotPassword} className="text-sm text-blue-400 hover:underline">
+            Esqueceu a senha?
+          </button>
+        </div>
       </div>
     </div>
   );

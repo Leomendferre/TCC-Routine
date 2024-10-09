@@ -2,6 +2,7 @@ import { FastifyInstance } from 'fastify'
 import dayjs from 'dayjs'
 import { z } from 'zod'
 import { prisma } from './lib/prisma'
+import { v4 as uuidv4 } from 'uuid'
 
 export async function appRoutes(app: FastifyInstance) {
   
@@ -235,5 +236,36 @@ export async function appRoutes(app: FastifyInstance) {
       console.error('Erro ao excluir o alvo:', error);
       return ('Erro ao excluir o alvo');
     }
+  });
+
+  app.post('/reset-password', async (request, reply) => {
+    const resetPasswordSchema = z.object({
+      username: z.string(),
+      newPassword: z.string(),
+    });
+  
+    const { username, newPassword } = resetPasswordSchema.parse(request.body);
+  
+    const user = await prisma.user.findUnique({
+      where: {
+        username,
+      },
+    });
+  
+    if (!user) {
+      reply.status(404).send('Usuário não encontrado');
+      return;
+    }
+  
+    await prisma.user.update({
+      where: {
+        username,
+      },
+      data: {
+        password: newPassword,
+      },
+    });
+  
+    reply.send('Senha alterada com sucesso');
   });
 }
