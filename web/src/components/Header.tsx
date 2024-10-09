@@ -14,17 +14,17 @@ export function Header() {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto flex items-center justify-between">
-      <img src={logoImage} alt="Routines" />
+    <div className="w-full max-w-3xl mx-auto flex flex-col items-right justify-between">
+      <img className="w-28 h-16 lg:w-32 lg:h-24" src={logoImage} alt="Routines" />
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 mt-3.5">
         <Dialog.Root>
           <Dialog.Trigger
             type="button"
-            className="border border-green-500 font-semibold rounded-lg px-6 py-4 flex items-center gap-3 hover:border-green-300"
+            className="border border-green-500 text-sm font-semibold rounded-lg px-4 py-2 lg:px-6 lg:py-4 flex items-center gap-3 hover:border-green-300"
           >
             <Plus size={20} className="text-green-500" />
-            Novo routine
+            Nova Routine
           </Dialog.Trigger>
 
           <Dialog.Portal>
@@ -45,7 +45,7 @@ export function Header() {
 
         <button
           onClick={handleLogout}
-          className="border border-red-500 font-semibold rounded-lg px-6 py-4 flex items-center gap-3 hover:border-red-300"
+          className="border border-red-500 text-sm font-semibold rounded-lg px-4 py-2 lg:px-6 lg:py-4 flex items-center gap-3 hover:border-red-300"
         >
           <SignOut size={20} className="text-red-500" />
           Logout

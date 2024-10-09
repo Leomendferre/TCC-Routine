@@ -75,7 +75,7 @@ export function RoutinesList({ date, onCompletedChanged }: RoutineLisProps) {
     <div className='mt-6 flex flex-col gap-3'>
       {routinesInfo?.possibleRoutines.map(routine => {
         return (
-          <div key={routine.id} className="flex items-center gap-3 group">
+          <div key={routine.id} className="flex items-center justify-between gap-3 group">
             <Checkbox.Root
               onCheckedChange={() => handleToggleRoutine(routine.id)}
               checked={routinesInfo.completedRoutines.includes(routine.id)}

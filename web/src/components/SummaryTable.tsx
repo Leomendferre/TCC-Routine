@@ -39,8 +39,8 @@ export function SummaryTable() {
   }, []);
 
   return (
-    <div className="w-full flex ">
-      <div className="text-left grid grid-rows-7 grid-flow-row gap-5 mr-2">
+    <div className="w-full flex flex-col md:flex-row">
+      <div className="text-center grid grid-col-7 grid-flow-col gap-3 md:grid-rows-7 lg:grid-flow-row lg:gap-5 lg:mr-2">
         {weekDays.map((weekDays, i) => {
           return (
             <div 
@@ -53,7 +53,7 @@ export function SummaryTable() {
         })}
       </div>
       
-      <div className="grid grid-rows-7 grid-flow-col gap-3">
+      <div className="grid grid-cols-7 md:grid-rows-7 md:grid-flow-col gap-3 max-w-full">
       {summary.length > 0 && summaryDates.map(date => {     
       const dayInSummary = summary.find(day => {
         return dayjs(date).isSame(day.date, 'day')
@@ -73,7 +73,7 @@ export function SummaryTable() {
           return (
             <div 
             key={i} 
-            className="w-10 h-10 bg-zinc-900 border-2 border-zinc-800 rounded-lg opacity-40 cursor-not-allowed"
+            className="w-10 h-10 bg-zinc-900 border-2 border-zinc-800 rounded-md opacity-40 cursor-not-allowed"
             />
           )
         })}

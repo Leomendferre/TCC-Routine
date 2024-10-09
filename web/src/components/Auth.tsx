@@ -30,7 +30,7 @@ const Auth: React.FC = () => {
   return (
     <div className="w-screen h-screen  bg-black">
       <div className="flex justify-center p-8">
-          <img src={logoImage} alt="Routine Logo" className="w-32 h-auto" />
+          <img className="w-28 h-16 lg:w-32 lg:h-24" src={logoImage} alt="Routine Logo"/>
         </div>
       <div className="w-screen max-w-md m-auto p-8 space-y-6 text-white shadow-md rounded-lg">
         <div className="flex justify-around">
