@@ -50,13 +50,14 @@ export async function appRoutes(app: FastifyInstance) {
       weekDays: z.array(
         z.number().min(0).max(6)
       ),
+      end_date: z.string().optional(),
     })
 
     const routineUser = z.object({
       id: z.string().uuid(),
     })
 
-    const { title, weekDays } = createRoutineBody.parse(request.body)
+    const { title, weekDays, end_date } = createRoutineBody.parse(request.body)
     const { id } = routineUser.parse(request.params)
 
     const today = dayjs().startOf('day').toDate()
@@ -66,6 +67,7 @@ export async function appRoutes(app: FastifyInstance) {
         user_id: id,
         title,
         created_at: today,
+        end_date: end_date,
         weekDays: {
           create: weekDays.map(weekDay => {
             return {

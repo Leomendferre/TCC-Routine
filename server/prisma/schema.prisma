@@ -23,6 +23,7 @@ model Routine {
   id         String   @id @default(uuid())
   title      String
   created_at DateTime
+  end_date   DateTime? 
   user_id    String
   user User @relation(fields: [user_id], references: [id])
 
