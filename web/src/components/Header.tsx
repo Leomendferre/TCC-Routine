@@ -69,7 +69,7 @@ export function Header() {
             className="border border-blue-500 text-sm font-semibold rounded-lg px-4 py-2 lg:px-6 lg:py-4 flex items-center gap-3 hover:border-blue-300"
           >
             <Calendar size={20} className="text-blue-500" />
-            Resumo Anual
+            Acompanhamento Anual
           </button>
         ) : location.pathname === '/yearly-summary' ? (
           <button
@@ -77,7 +77,7 @@ export function Header() {
             className="border border-blue-500 text-sm font-semibold rounded-lg px-4 py-2 lg:px-6 lg:py-4 flex items-center gap-3 hover:border-blue-300"
           >
             <Calendar size={20} className="text-blue-500" />
-            Resumo do Mês
+            Mês
           </button>
         ) : null}
 
