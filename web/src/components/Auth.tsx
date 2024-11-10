@@ -78,11 +78,15 @@ const Auth: React.FC = () => {
             </button>
           </div>
         </form>
+        
+        {isLogin ? (
         <div className="text-center">
           <button onClick={handleForgotPassword} className="text-sm text-blue-400 hover:underline">
             Esqueceu a senha?
           </button>
         </div>
+        ) : ''}
+        
       </div>
     </div>
   );
