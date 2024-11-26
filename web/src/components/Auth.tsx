@@ -39,13 +39,13 @@ const Auth: React.FC = () => {
         <div className="flex justify-around">
           <button
             onClick={() => setIsLogin(true)}
-            className={`w-1/2 py-2 ${isLogin ? 'font-bold border-b-2 border-blue-500' : ''}`}
+            className={`w-1/2 py-2 ${isLogin ? 'font-bold border-b-2 border-red-500' : ''}`}
           >
             Login
           </button>
           <button
             onClick={() => setIsLogin(false)}
-            className={`w-1/2 py-2 ${!isLogin ? 'font-bold border-b-2 border-blue-500' : ''}`}
+            className={`w-1/2 py-2 ${!isLogin ? 'font-bold border-b-2 border-red-500' : ''}`}
           >
             Criar conta
           </button>
@@ -57,7 +57,7 @@ const Auth: React.FC = () => {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           </div>
           <div>
@@ -66,7 +66,7 @@ const Auth: React.FC = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           </div>
           <div className="w-full flex justify-center">

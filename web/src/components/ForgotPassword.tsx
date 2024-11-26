@@ -44,7 +44,7 @@ const ForgotPassword: React.FC = () => {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           </div>
           <div>
@@ -53,7 +53,7 @@ const ForgotPassword: React.FC = () => {
               type="password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           </div>
           <div>
@@ -62,7 +62,7 @@ const ForgotPassword: React.FC = () => {
               type="text"
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              className="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full px-3 py-2 bg-gray-900 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-red-500"
             />
           </div>
           <p className="text-gray-400 text-sm">Código de verificação: {generatedCode}</p>
