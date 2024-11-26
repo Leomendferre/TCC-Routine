@@ -70,7 +70,7 @@ export function NewRoutinesForm() {
       type="text" 
       id="title"
       placeholder="ex.: Exercícios, dormir bem, etc..."
-      className="p-4 rounded-lg mt-3 bg-zinc-800 text-white placeholder; text-zinc-400"
+      className="p-4 rounded-lg mt-3 bg-zinc-800 text-white placeholder:text-zinc-400"
       autoFocus
       value={title}
       onChange={event => setTitle(event.target.value)}
@@ -89,7 +89,7 @@ export function NewRoutinesForm() {
               checked={weekDays.includes(index)}
               onCheckedChange={() => handleToggleWeekDay(index)}
               >
-            <div className="h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-900 border-2 border-zinc-800 group-data-[state=checked]:bg-green-500 group-data-[state=checked]:border-green-500">
+            <div className="h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-900 border-2 border-zinc-800 group-data-[state=checked]:bg-red-500 group-data-[state=checked]:border-red-500">
               <Checkbox.Indicator>
                 <Check size={20} className="text-white" />
               </Checkbox.Indicator>
@@ -105,7 +105,7 @@ export function NewRoutinesForm() {
         </div>
 
       <label htmlFor="endDate" className="font-semibold leading-tight mt-4">
-        Deseja definir até quando esse hábito dure?
+        Deseja definir até quando esse hábito vai durar?
       </label>
       <DatePicker
         selected={endDate}
@@ -117,7 +117,7 @@ export function NewRoutinesForm() {
         placeholderText="Selecione uma data"
       />
 
-      <button type="submit" className="mt-6 rounded-lg p-4 flex items-center justify-center gap-3 font-semibold bg-green-600 hover:bg-green-500">
+      <button type="submit" className="mt-6 rounded-lg p-4 flex items-center justify-center gap-3 font-semibold bg-red-600 hover:bg-red-500">
         <Check size={20} weight="bold" />
         Confirmar
       </button>

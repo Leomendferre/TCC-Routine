@@ -9,7 +9,7 @@ export function ProgressBar(props: ProgressBarProps) {
         role="progressbar"
         arial-label="Progresso de routines compeltados nesse dia"
         arial-valuenow={props.progress}
-        className="h-3 rounded-xl bg-green-600"
+        className="h-3 rounded-xl bg-red-600"
         style={{ width: `${props.progress}%`}}
       />
     </div>
